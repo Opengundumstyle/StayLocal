@@ -16,6 +16,9 @@ const Search = () => {
               <div className="text-sm font-semibold px-6 ">
                    Anywhere
               </div>
+              <div className="hidden sm:block text-sm font-semibold px-6 border-x-[1px] flex-1 text-center">
+                   Any Week 
+              </div>
 
         </div>
       
