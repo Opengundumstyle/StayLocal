@@ -12,9 +12,9 @@ const Logo = () => {
       <Image
        alt="logo"
        className='hidden md:block cursor:pointer'
-       height="180"
-       width="180"
-       src="/images/logo.png"/>
+       height="120"
+       width="120"
+       src="/images/staylocal-logo.png"/>
   )
 }
 
