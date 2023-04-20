@@ -106,6 +106,7 @@ if(!isOpen){
                                                     onClick={handleSubmit}
                                                     />
                                           </div>
+                                          {footer}
                                    </div>
                           </div>
                    </div>
