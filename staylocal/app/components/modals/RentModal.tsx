@@ -9,6 +9,7 @@ import CategoryInput from '../inputs/CategoryInput';
 import { useForm,FieldValues } from 'react-hook-form';
 import CountrySelect, { CountrySelectValue } from '../inputs/CountrySelect';
 import dynamic from 'next/dynamic';
+import Counter from '../inputs/Counter';
 
 enum STEPS {
    CATEGORY = 0,
@@ -24,7 +25,7 @@ const RentModal = () => {
       const rentModal = useRentModal()
       
       const [step,setStep] = useState(STEPS.CATEGORY)
-
+      console.log('what is step here',step)
       const {
          register,
           handleSubmit,
@@ -40,7 +41,7 @@ const RentModal = () => {
                location:null,
                guestCount:1,
                roomCount:1,
-               bathRoomCount:1,
+               bathroomCount:1,
                imageSrc:'',
                price:1,
                title:'',
@@ -50,6 +51,9 @@ const RentModal = () => {
 
      const category = watch('category')
      const location = watch('location')
+     const guestCount = watch("guestCount")
+     const roomCount = watch("roomCount")
+     const bathroomCount = watch("bathroomCount")
     
      const Map = useMemo(()=>dynamic(()=>import('../Map'),{
              ssr:false
@@ -121,7 +125,36 @@ const RentModal = () => {
            </div> 
          )
      }
-
+   
+    if(step === STEPS.INFO){
+         bodyContent = (
+           <div className='flex flex-col gap-8 '>
+               <Heading
+                  title="share some basic about your place"
+                  subtitle='what amenities do you have?'
+                />
+               <Counter 
+                  title="Guests"
+                  subtitle="How many guests do you allow ?"
+                  value={guestCount}
+                  onChange={(value)=>setCustomValue('guestCount',value)}/>
+                <hr/>
+                <Counter 
+                  title="Rooms"
+                  subtitle="How many rooms do you have?"
+                  value={roomCount}
+                  onChange={(value)=>setCustomValue('roomCount',value)}/>
+                   <hr/>
+                <Counter 
+                  title="Bathrooms"
+                  subtitle="How many bathrooms do you have?"
+                  value={bathroomCount}
+                  onChange={(value)=>setCustomValue('bathroomCount',value)}/>
+                 
+              
+           </div>
+         )
+    }
 
   return (
        <Modal
@@ -130,7 +163,7 @@ const RentModal = () => {
         onSubmit={onNext}
         actionLabel={actionLabel}
         secondaryActionLabel={secondaryLabel}
-        secondaryAction={step === STEPS.CATEGORY ? undefined : onBack}
+        secondaryAction={step === STEPS.CATEGORY? undefined : onBack}
         title="StayLocal Your Home!"
         body={bodyContent}/>
   )
