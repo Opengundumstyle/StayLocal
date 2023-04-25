@@ -18,10 +18,11 @@ import { Range } from "react-date-range"
 const initialDateRange = {
      startDate: new Date(),
      endDate:new Date(),
-     key:'selection'
+     key:'selection',
 }
 
 interface ListingClientProps {
+
      reservations?:Reservation[]
      listing: SafeListing & {
          user:SafeUser
