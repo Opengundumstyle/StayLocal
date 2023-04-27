@@ -117,6 +117,3 @@ if(!isOpen){
 }
 
 export default Modal
-
-
-
