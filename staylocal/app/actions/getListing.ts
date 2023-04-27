@@ -18,7 +18,6 @@ export default async function getListings(
        params:IListingsParams
 ){
    
-
       try{
       
          const {
@@ -55,6 +54,7 @@ export default async function getListings(
                if(bathroomCount){
                      query.bathroomCount = {
                      gte: +bathroomCount
+                     }
                }
 
                if(locationValue){
@@ -80,7 +80,7 @@ export default async function getListings(
                     }
                }
 
-           }
+           
 
 
 
